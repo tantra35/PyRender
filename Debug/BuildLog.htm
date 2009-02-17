@@ -1,0 +1,101 @@
+<html>
+<head>
+<META HTTP-EQUIV="Content-Type" content="text/html; charset=windows-1251">
+</head>
+<body>
+<pre>
+<table width=100% bgcolor=#CFCFE5><tr> <td> <font face=arial size=+3>
+Build Log
+</font></table><table width=* cellspacing=0 cellpadding=0><tr><td width=0 bgcolor=#EDEDF5>&nbsp;</td><td width=0 bgcolor=#FFFFFF>&nbsp;</td><td width=*><pre>
+<h3>------- Build started: Project: PyRender, Configuration: Debug|Win32 -------
+</h3>
+</pre></table><table width=100% bgcolor=#DFDFE5><tr><td><font face=arial size=+2>
+Command Lines
+</font></table><table width=* cellspacing=0 cellpadding=0><tr><td width=0 bgcolor=#EDEDF5>&nbsp;</td><td width=0 bgcolor=#FFFFFF>&nbsp;</td><td width=*><pre>Creating temporary file "f:\Src\PyRender\Debug\RSP00003D.rsp" with contents
+[
+/Od /I "D:\Python2.6.1-SL\include\Stackless" /I "D:\Python2.6.1-SL\include" /D "WIN32" /D "_WINDOWS" /D "_USRDLL" /D "_DEBUG" /D "_WINDLL" /D "_MBCS" /Gm /EHsc /RTC1 /MTd /Yu"stdafx.h" /Fp"Debug/Render.pch" /Fo"Debug/" /Fd"Debug/vc70.pdb" /W3 /c /Wp64 /ZI /TP
+.\PyRender.cpp
+.\PyDict.cpp
+.\PyContext.cpp
+.\PyArray.cpp
+.\PHPDbConnectionCursor.cpp
+.\PHPDbConnection.cpp
+]
+Creating command line "cl.exe @f:\Src\PyRender\Debug\RSP00003D.rsp /nologo"
+Creating temporary file "f:\Src\PyRender\Debug\RSP00003E.rsp" with contents
+[
+/Od /I "D:\Python2.6.1-SL\include\Stackless" /I "D:\Python2.6.1-SL\include" /D "WIN32" /D "_WINDOWS" /D "_USRDLL" /D "_DEBUG" /D "_WINDLL" /D "_MBCS" /Gm /EHsc /RTC1 /MTd /Yc"stdafx.h" /Fp"Debug/Render.pch" /Fo"Debug/" /Fd"Debug/vc70.pdb" /W3 /c /Wp64 /ZI /TP
+.\stdafx.cpp
+]
+Creating command line "cl.exe @f:\Src\PyRender\Debug\RSP00003E.rsp /nologo"
+Creating temporary file "f:\Src\PyRender\Debug\RSP00003F.rsp" with contents
+[
+/Od /I "..\php-5.2.8\Zend\\" /I "..\php-5.2.8\TSRM\\" /I "..\php-5.2.8\main\\" /I "..\php-5.2.8\\" /I "..\php-5.2.8\win32\\" /I "D:\Python2.6.1-SL\include\Stackless" /I "D:\Python2.6.1-SL\include" /D "ZEND_DEBUG=1" /D "ZEND_WIN32_FORCE_INLINE" /D "ZTS" /D "ZEND_WIN32" /D "PHP_WIN32" /D "WIN32" /D "_WINDOWS" /D "_USRDLL" /D "_DEBUG" /D "_WINDLL" /D "_MBCS" /Gm /EHsc /RTC1 /MTd /Yu"stdafx.h" /Fp"Debug/Render.pch" /Fo"Debug/" /Fd"Debug/vc70.pdb" /W3 /c /Wp64 /ZI /TP
+.\PyClasses.cpp
+.\PHPCore.cpp
+.\PHPArray.cpp
+]
+Creating command line "cl.exe @f:\Src\PyRender\Debug\RSP00003F.rsp /nologo"
+Creating temporary file "f:\Src\PyRender\Debug\RSP000040.rsp" with contents
+[
+/OUT:"Debug/Render.pyd" /INCREMENTAL /NOLOGO /LIBPATH:"D:\Python2.6.1-SL\libs" /LIBPATH:"..\php-5.2.8\Debug_TS" /DLL /DEBUG /PDB:"Debug/PyRender.pdb" /SUBSYSTEM:WINDOWS /IMPLIB:"Debug/PyRender.lib" /MACHINE:X86 php5ts_debug.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib "\Src\php-5.2.8\Debug_TS\php5ts_debug.lib"
+.\Debug\PHPArray.obj
+.\Debug\PHPCore.obj
+.\Debug\PHPDbConnection.obj
+.\Debug\PHPDbConnectionCursor.obj
+.\Debug\PyArray.obj
+.\Debug\PyClasses.obj
+.\Debug\PyContext.obj
+.\Debug\PyDict.obj
+.\Debug\PyRender.obj
+.\Debug\stdafx.obj
+]
+Creating command line "link.exe @f:\Src\PyRender\Debug\RSP000040.rsp"
+</pre></table><table width=100% bgcolor=#DFDFE5><tr><td><font face=arial size=+2>
+Output Window
+</font></table><table width=* cellspacing=0 cellpadding=0><tr><td width=0 bgcolor=#EDEDF5>&nbsp;</td><td width=0 bgcolor=#FFFFFF>&nbsp;</td><td width=*><pre>Compiling...
+stdafx.cpp
+Compiling...
+PyRender.cpp
+PyDict.cpp
+f:\Src\PyRender\PyDict.cpp(34) : warning C4244: 'return' : conversion from 'Py_ssize_t' to 'int', possible loss of data
+f:\Src\PyRender\PyDict.cpp(57) : warning C4800: 'int' : forcing value to bool 'true' or 'false' (performance warning)
+f:\Src\PyRender\PyDict.cpp(67) : warning C4800: 'int' : forcing value to bool 'true' or 'false' (performance warning)
+f:\Src\PyRender\PyDict.cpp(76) : warning C4800: 'int' : forcing value to bool 'true' or 'false' (performance warning)
+f:\Src\PyRender\PyDict.cpp(88) : warning C4800: 'int' : forcing value to bool 'true' or 'false' (performance warning)
+PyContext.cpp
+f:\Src\PyRender\PyContext.cpp(16) : warning C4800: 'int' : forcing value to bool 'true' or 'false' (performance warning)
+PyArray.cpp
+f:\Src\PyRender\PyArray.cpp(33) : warning C4244: 'return' : conversion from 'Py_ssize_t' to 'int', possible loss of data
+PHPDbConnectionCursor.cpp
+PHPDbConnection.cpp
+Generating Code...
+Compiling...
+PyClasses.cpp
+f:\Src\php-5.2.8\Zend\zend_execute.h(149) : warning C4311: 'type cast' : pointer truncation from 'void *' to 'zend_uintptr_t'
+f:\Src\php-5.2.8\Zend\zend_execute.h(163) : warning C4311: 'type cast' : pointer truncation from 'void *' to 'zend_uintptr_t'
+f:\Src\PyRender\PyClasses.cpp(38) : warning C4267: 'initializing' : conversion from 'size_t' to 'int', possible loss of data
+f:\Src\PyRender\PyClasses.cpp(56) : warning C4267: 'argument' : conversion from 'size_t' to 'uint', possible loss of data
+f:\Src\PyRender\PyClasses.cpp(67) : warning C4267: 'argument' : conversion from 'size_t' to 'uint', possible loss of data
+f:\Src\PyRender\PyClasses.cpp(87) : warning C4267: 'argument' : conversion from 'size_t' to 'uint', possible loss of data
+f:\Src\PyRender\PyClasses.cpp(175) : warning C4267: 'argument' : conversion from 'size_t' to 'uint', possible loss of data
+f:\Src\PyRender\PyClasses.cpp(226) : warning C4267: 'argument' : conversion from 'size_t' to 'uint', possible loss of data
+f:\Src\PyRender\PyClasses.cpp(343) : warning C4267: 'argument' : conversion from 'size_t' to 'uint', possible loss of data
+f:\Src\PyRender\PyClasses.cpp(377) : warning C4267: 'argument' : conversion from 'size_t' to 'uint', possible loss of data
+f:\Src\PyRender\PyClasses.cpp(412) : warning C4267: 'argument' : conversion from 'size_t' to 'uint', possible loss of data
+f:\Src\PyRender\PyClasses.cpp(739) : warning C4267: '=' : conversion from 'size_t' to 'int', possible loss of data
+PHPCore.cpp
+f:\Src\php-5.2.8\Zend\zend_execute.h(149) : warning C4311: 'type cast' : pointer truncation from 'void *' to 'zend_uintptr_t'
+f:\Src\php-5.2.8\Zend\zend_execute.h(163) : warning C4311: 'type cast' : pointer truncation from 'void *' to 'zend_uintptr_t'
+PHPArray.cpp
+f:\Src\php-5.2.8\Zend\zend_execute.h(149) : warning C4311: 'type cast' : pointer truncation from 'void *' to 'zend_uintptr_t'
+f:\Src\php-5.2.8\Zend\zend_execute.h(163) : warning C4311: 'type cast' : pointer truncation from 'void *' to 'zend_uintptr_t'
+Generating Code...
+Linking...
+   Creating library Debug/PyRender.lib and object Debug/PyRender.exp
+</pre></table><table width=100% bgcolor=#DFDFE5><tr><td><font face=arial size=+2>
+Results
+</font></table><table width=* cellspacing=0 cellpadding=0><tr><td width=0 bgcolor=#EDEDF5>&nbsp;</td><td width=0 bgcolor=#FFFFFF>&nbsp;</td><td width=*><pre>
+Build log was saved at "file://f:\Src\PyRender\Debug\BuildLog.htm"
+PyRender - 0 error(s), 23 warning(s)</pre></table><table   width=100% height=20 bgcolor=#CFCFE5><tr><td><font face=arial size=+2>
+</font></table></body></html>

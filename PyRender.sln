@@ -1,0 +1,23 @@
+Microsoft Visual Studio Solution File, Format Version 8.00
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "PyRender", "PyRender.vcproj", "{B5E9A7C7-8F6D-4778-9619-AA4C35FA6EED}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfiguration) = preSolution
+		Debug = Debug
+		Release = Release
+	EndGlobalSection
+	GlobalSection(ProjectDependencies) = postSolution
+	EndGlobalSection
+	GlobalSection(ProjectConfiguration) = postSolution
+		{B5E9A7C7-8F6D-4778-9619-AA4C35FA6EED}.Debug.ActiveCfg = Debug|Win32
+		{B5E9A7C7-8F6D-4778-9619-AA4C35FA6EED}.Debug.Build.0 = Debug|Win32
+		{B5E9A7C7-8F6D-4778-9619-AA4C35FA6EED}.Release.ActiveCfg = Release|Win32
+		{B5E9A7C7-8F6D-4778-9619-AA4C35FA6EED}.Release.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+	EndGlobalSection
+	GlobalSection(ExtensibilityAddIns) = postSolution
+	EndGlobalSection
+EndGlobal
