@@ -7,6 +7,19 @@
 
 #include "PHPArray.h"
 
+bool get_next_num_item(zval* arr, HashPosition* pos)
+{
+	int key_type = zend_hash_get_current_key_type_ex(Z_ARRVAL_P(arr), pos);
+
+	while(key_type != HASH_KEY_IS_LONG && key_type != HASH_KEY_NON_EXISTANT)
+	{
+		zend_hash_move_forward_ex(Z_ARRVAL_P(arr), pos);
+		key_type = zend_hash_get_current_key_type_ex(Z_ARRVAL_P(arr), pos);
+	};
+
+	return key_type == HASH_KEY_IS_LONG;
+};
+
 CPHPArray::CPHPArray(void)
 {
 }
@@ -15,6 +28,9 @@ CPHPArray::CPHPArray(zval* arr)
 {
 	m_arr = arr;
 	ZVAL_ADDREF(m_arr);
+
+	zend_hash_internal_pointer_reset_ex(Z_ARRVAL_P(m_arr), &m_pos);
+	get_next_num_item(m_arr, &m_pos);
 };
 
 CPHPArray::~CPHPArray(void)
@@ -110,26 +126,22 @@ bool CPHPArray::get_valid()
 void CPHPArray::reset()
 {
 	zend_hash_internal_pointer_reset_ex(Z_ARRVAL_P(m_arr), &m_pos);
+	get_next_num_item(m_arr, &m_pos);
 };
 
 bool CPHPArray::next(CSimpleTypeVar* var)
 {
 	zval **tmp; 
 	bool retval = false;
-	int key_type = zend_hash_get_current_key_type_ex(Z_ARRVAL_P(m_arr), &m_pos);
 
-	while(key_type != HASH_KEY_IS_LONG && key_type != HASH_KEY_NON_EXISTANT)
-	{
-		zend_hash_move_forward_ex(Z_ARRVAL_P(m_arr), &m_pos);
-		key_type = zend_hash_get_current_key_type_ex(Z_ARRVAL_P(m_arr), &m_pos);
-	};
-	
-	if((key_type != HASH_KEY_NON_EXISTANT) && (zend_hash_get_current_data_ex(Z_ARRVAL_P(m_arr),  (void **) &tmp, &m_pos) == SUCCESS))
+	if(zend_hash_get_current_data_ex(Z_ARRVAL_P(m_arr),  (void **) &tmp, &m_pos) == SUCCESS)
 	{
 		retval = true;
 		get_item_helper(*tmp, var);
+		
 		zend_hash_move_forward_ex(Z_ARRVAL_P(m_arr), &m_pos);
+		get_next_num_item(m_arr, &m_pos);
 	};
 
 	return retval;
-}
+};

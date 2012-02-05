@@ -43,7 +43,7 @@ typedef struct _CSimpleTypeVar
 		double fval;
 		IArray* aval;
 		IDict* dval;
-		struct _octet
+		struct
 		{
 			char* str;
 			size_t str_l;

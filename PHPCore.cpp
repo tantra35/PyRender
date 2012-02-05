@@ -18,6 +18,19 @@ extern zend_module_entry PHPPyRender_module;
 static int
 php_apache_sapi_ub_write(const char *str, uint str_length TSRMLS_DC)
 {
+/*
+	request_rec *r;
+	php_struct *ctx;
+
+	ctx = SG(server_context);
+	r = ctx->r;
+
+	if (ap_rwrite(str, str_length, r) < 0) {
+		php_handle_aborted_connection();
+	}
+
+	return str_length; // we always consume all the data passed to us.
+*/
 	IPyCountext* ctx = (IPyCountext*)SG(server_context);
 	return ctx->write(str, str_length);
 };
@@ -118,10 +131,11 @@ php_apache_sapi_header_handler(sapi_header_struct *sapi_header,sapi_headers_stru
 	apr_table_set(ctx->r->headers_out, sapi_header->header, val);
 	} else {
 	apr_table_add(ctx->r->headers_out, sapi_header->header, val);
-	}
-
+	}	
 	sapi_free_header(sapi_header);
+
 	*/
+	sapi_free_header(sapi_header);
 	return 0;
 };
 
@@ -198,6 +212,7 @@ php_apache_sapi_register_variables(zval *track_vars_array TSRMLS_DC)
 	object_init_ex(PHPPyContext, CPHPPyContext_class_entry); 
 
 	php_register_variable_ex("PyContext", PHPPyContext, track_vars_array TSRMLS_CC);
+	FREE_ZVAL(PHPPyContext);
 };
 
 static void php_apache_sapi_log_message(char *msg)
@@ -252,7 +267,6 @@ bool Exec_PHP(IPyCountext* context, char* php_filename)
 	TSRMLS_FETCH();	
 	SG(server_context) = context;
 
-	zval *local_retval=NULL;
 	zend_file_handle zfd = {0};
 
 	zfd.type = ZEND_HANDLE_FILENAME;

@@ -1,4 +1,5 @@
 from flup.server.fcgi import *;
+#import fastcgi;
 import Render;
 import MySQLdb as dbi;
 from MySQLdb.cursors import *;
@@ -23,3 +24,5 @@ def myapp(environ, start_response):
 	return [];
 
 WSGIServer(myapp, bindAddress = ('localhost', 3345), debug=False).run();
+#s = fastcgi.ThreadedWSGIServer(myapp, workers=5);
+#s.serve_forever();

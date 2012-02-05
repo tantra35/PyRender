@@ -1,7 +1,9 @@
 from flup.server.fcgi import *;
+#import fastcgi;
 import Render;
 import MySQLdb as dbi;
 from MySQLdb.cursors import *;
+import psyco;
 
 def myapp(environ, start_response):
 	dbh    = dbi.connect(named_pipe=True, db="playrix_corp", user="root", passwd="root");
@@ -22,4 +24,7 @@ def myapp(environ, start_response):
 
 	return [];
 
-WSGIServer(myapp, bindAddress = ('localhost', 3345), debug=False).run();
+psyco.full();
+WSGIServer(myapp, bindAddress = ('192.168.20.4', 3345), debug=False).run();
+#s = fastcgi.ThreadedWSGIServer(myapp, workers=5);
+#s.serve_forever();

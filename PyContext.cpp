@@ -54,20 +54,15 @@ int CPyContext::write(const char* buff, int length)
 				memcpy(&(m_PyRenderObject->buff[m_PyRenderObject->buff_pos]), buff, tail);
 				int datatail = length - tail;
 
-				PyObject* arglist = Py_BuildValue("(s#)", m_PyRenderObject->buff, BUFFMAXSIZE);
-				PyObject* result = PyEval_CallObject(m_retval, arglist);
-
+				PyObject* result = PyEval_CallFunction(m_retval, "(s#)", m_PyRenderObject->buff, BUFFMAXSIZE);
 				Py_XDECREF(result);
-				Py_DECREF(arglist);
+
 				m_PyRenderObject->buff_pos = 0;
 
 				if((length - tail) > BUFFMAXSIZE)
 				{
-					PyObject* arglist = Py_BuildValue("(s#)", &buff[tail], datatail);
-					PyObject* result = PyEval_CallObject(m_retval, arglist);
-
+					PyObject* result = PyEval_CallFunction(m_retval, "(s#)", &buff[tail], datatail);
 					Py_XDECREF(result);
-					Py_DECREF(arglist);
 				}
 				else	
 				{
@@ -92,11 +87,8 @@ void CPyContext::flush()
 {
 	if(is_callable)
 	{
-		PyObject* arglist = Py_BuildValue("(s#)", m_PyRenderObject->buff, m_PyRenderObject->buff_pos);		
-		PyObject* result = PyEval_CallObject(m_retval, arglist);
-
+		PyObject* result = PyEval_CallFunction(m_retval, "(s#)", m_PyRenderObject->buff, m_PyRenderObject->buff_pos);
 		Py_XDECREF(result);
-		Py_DECREF(arglist);		
 
 		m_PyRenderObject->buff_pos = 0;
 	};

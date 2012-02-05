@@ -54,6 +54,7 @@ inline void get_item_helper(zval* zrval, CSimpleTypeVar* var, TSRMLS_D)
 			object_init_ex(zrval, g_CPHPPyArray_class_entry);
 			ZEND_REGISTER_RESOURCE(zpyarrayres, var->aval, g_pyarrayrtype); 
 			add_property_zval(zrval, "pyarray", zpyarrayres);
+			ZVAL_DELREF(zpyarrayres);
 		};
 		break;
 
@@ -65,6 +66,7 @@ inline void get_item_helper(zval* zrval, CSimpleTypeVar* var, TSRMLS_D)
 			object_init_ex(zrval, g_CPHPPyDict_class_entry);
 			ZEND_REGISTER_RESOURCE(zpydictres, var->dval, g_pydictrtype); 
 			add_property_zval(zrval, "pydict", zpydictres);
+			ZVAL_DELREF(zpydictres);
 		};
 		break;
 
@@ -85,6 +87,7 @@ ZEND_FUNCTION(CPHPPyContext_get_connection)
 
 	ZEND_REGISTER_RESOURCE(dbconnres, dbconn, g_dbconnrtype); 
 	add_property_zval(return_value, "dbconn", dbconnres);
+	ZVAL_DELREF(dbconnres);
 };
 
 ZEND_FUNCTION(CPHPPyContext_get_data)
@@ -173,6 +176,7 @@ ZEND_FUNCTION(CPHPPyDbConnection_cursor)
 
 			ZEND_REGISTER_RESOURCE(cursorres, cursor, g_dbconncursorrtype); 
 			add_property_zval(return_value, "dbconncursor", cursorres);
+			ZVAL_DELREF(cursorres);
 		}
 		else
 		{
@@ -224,6 +228,7 @@ ZEND_FUNCTION(CPHPPyDbConnectionCursor_getprop)
 
 					object_init_ex(return_value, g_CPHPPyArray_class_entry);
 					add_property_zval(return_value, "pyarray", zpyarrayres);
+					ZVAL_DELREF(zpyarrayres);
 				}
 				else
 				{
@@ -341,6 +346,7 @@ ZEND_FUNCTION(CPHPPyDbConnectionCursor_fetchone)
 
 			object_init_ex(return_value, g_CPHPPyArray_class_entry);
 			add_property_zval(return_value, "pyarray", zpyarrayres);			
+			ZVAL_DELREF(zpyarrayres);
 		}
 		else
 		{
@@ -375,6 +381,7 @@ ZEND_FUNCTION(CPHPPyDbConnectionCursor_fetchmany)
 
 				object_init_ex(return_value, g_CPHPPyArray_class_entry);
 				add_property_zval(return_value, "pyarray", zpyarrayres);
+				ZVAL_DELREF(zpyarrayres);
 			}
 			else
 			{
@@ -409,7 +416,8 @@ ZEND_FUNCTION(CPHPPyDbConnectionCursor_fetchall)
 			ZEND_REGISTER_RESOURCE(zpyarrayres, rows, g_pyarrayrtype);
 
 			object_init_ex(return_value, g_CPHPPyArray_class_entry);
-			add_property_zval(return_value, "pyarray", zpyarrayres);		
+			add_property_zval(return_value, "pyarray", zpyarrayres);
+			ZVAL_DELREF(zpyarrayres);
 		}
 		else
 		{
